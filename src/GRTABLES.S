@@ -1,0 +1,285 @@
+********************************
+* GRTABLES.S                   *
+* Tables for Hi-Res Graphics   *
+*    Nick Waun                 *
+*    02-01-2017                *
+********************************
+
+ REL
+ DSK /EK/BIN/GRTABLES.L
+
+HGRROWS ENT
+ DA $2000 ;Screen row position address table
+ DA $2080 ;for HGR
+ DA $2100
+ DA $2180
+ DA $2200
+ DA $2280
+ DA $2300
+ DA $2380
+ DA $2028
+ DA $20A8
+ DA $2128
+ DA $21A8
+ DA $2228
+ DA $22A8
+ DA $2328
+ DA $23A8
+ DA $2050
+ DA $20D0
+ DA $2150
+ DA $21D0
+ DA $2250
+ DA $22D0
+ DA $2350
+ DA $23D0
+
+HGRLINS ENT
+ DA $2000 ;Line 0, first third
+ DA $2400
+ DA $2800
+ DA $2C00
+ DA $3000
+ DA $3400
+ DA $3800
+ DA $3C00
+
+ DA $2080 ;Line 1
+ DA $2480
+ DA $2880
+ DA $2C80
+ DA $3080
+ DA $3480
+ DA $3880
+ DA $3C80
+
+ DA $2100 ;line 2
+ DA $2500
+ DA $2900
+ DA $2D00
+ DA $3100
+ DA $3500
+ DA $3900
+ DA $3D00
+
+ DA $2180 ;line 3
+ DA $2580
+ DA $2980
+ DA $2D80
+ DA $3180
+ DA $3580
+ DA $3980
+ DA $3D80
+
+ DA $2200 ;line 4
+ DA $2600
+ DA $2A00
+ DA $2E00
+ DA $3200
+ DA $3600
+ DA $3A00
+ DA $3E00
+
+ DA $2280 ;line 5
+ DA $2680
+ DA $2A80
+ DA $2E80
+ DA $3280
+ DA $3680
+ DA $3A80
+ DA $3E80
+
+ DA $2300 ;line 6
+ DA $2700
+ DA $2B00
+ DA $2F00
+ DA $3300
+ DA $3700
+ DA $3B00
+ DA $3F00
+
+ DA $2380 ;line 7
+ DA $2780
+ DA $2B80
+ DA $2F80
+ DA $3380
+ DA $3780
+ DA $3B80
+ DA $3F80
+
+
+ DA $2028 ;Line 0, second third
+ DA $2428
+ DA $2828
+ DA $2C28
+ DA $3028
+ DA $3428
+ DA $3828
+ DA $3C28
+
+ DA $20A8
+ DA $24A8
+ DA $28A8
+ DA $2CA8
+ DA $30A8
+ DA $34A8
+ DA $38A8
+ DA $3CA8
+
+ DA $2128
+ DA $2528
+ DA $2928
+ DA $2D28
+ DA $3128
+ DA $3528
+ DA $3928
+ DA $3D28
+
+ DA $21A8
+ DA $25A8
+ DA $29A8
+ DA $2DA8
+ DA $31A8
+ DA $35A8
+ DA $39A8
+ DA $3DA8
+
+ DA $2228
+ DA $2628
+ DA $2A28
+ DA $2E28
+ DA $3228
+ DA $3628
+ DA $3A28
+ DA $3E28
+
+ DA $22A8
+ DA $26A8
+ DA $2AA8
+ DA $2EA8
+ DA $32A8
+ DA $36A8
+ DA $3AA8
+ DA $3EA8
+
+ DA $2328
+ DA $2728
+ DA $2B28
+ DA $2F28
+ DA $3328
+ DA $3728
+ DA $3B28
+ DA $3F28
+
+ DA $23A8
+ DA $27A8
+ DA $2BA8
+ DA $2FA8
+ DA $33A8
+ DA $37A8
+ DA $3BA8
+ DA $3FA8
+
+
+ DA $2050 ;Line 0, final third
+ DA $2450
+ DA $2850
+ DA $2C50
+ DA $3050
+ DA $3450
+ DA $3850
+ DA $3C50
+
+ DA $20D0
+ DA $24D0
+ DA $28D0
+ DA $2CD0
+ DA $30D0
+ DA $34D0
+ DA $38D0
+ DA $3CD0
+
+ DA $2150
+ DA $2550
+ DA $2950
+ DA $2D50
+ DA $3150
+ DA $3550
+ DA $3950
+ DA $3D50
+
+ DA $21D0
+ DA $25D0
+ DA $29D0
+ DA $2DD0
+ DA $31D0
+ DA $35D0
+ DA $39D0
+ DA $3DD0
+
+ DA $2250
+ DA $2650
+ DA $2A50
+ DA $2E50
+ DA $3250
+ DA $3650
+ DA $3A50
+ DA $3E50
+
+ DA $22D0
+ DA $26D0
+ DA $2AD0
+ DA $2ED0
+ DA $32D0
+ DA $36D0
+ DA $3AD0
+ DA $3ED0
+
+ DA $2350
+ DA $2750
+ DA $2B50
+ DA $2F50
+ DA $3350
+ DA $3750
+ DA $3B50
+ DA $3F50
+
+ DA $23D0
+ DA $27D0
+ DA $2BD0
+ DA $2FD0
+ DA $33D0
+ DA $37D0
+ DA $3BD0
+ DA $3FD0
+
+*-------------------------------
+* LORESTAB
+* Table of low res/text
+* memory offsets
+*-------------------------------
+LORESTAB ENT
+ DA $0400
+ DA $0480
+ DA $0500
+ DA $0580
+ DA $0600
+ DA $0680
+ DA $0700
+ DA $0780
+ DA $0428
+ DA $04A8
+ DA $0528
+ DA $05A8
+ DA $0628
+ DA $06A8
+ DA $0728
+ DA $07A8
+ DA $0450
+ DA $04D0
+ DA $0550
+ DA $05D0
+ DA $0650
+ DA $06D0
+ DA $0750
+ DA $07D0

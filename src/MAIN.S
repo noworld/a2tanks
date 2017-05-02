@@ -20,7 +20,7 @@ STRA EQU $A6
 
 WAITRAND EXT ;Generate random seed while waiting
 WAITKEY EXT ;Wait for keypress
-SETTEXT EXT ;Set text display mode
+SETTXT EXT ;Set text display mode
 TXTSPLASH EXT ;Show text splash screen
 TITLSCRN EXT
 SETHGR EXT ;Set HGR mode
@@ -29,6 +29,7 @@ DRWC EXT ;Draw single character
 DRWS EXT  ;Draw string
 ROLL_D6 EXT ;Roll a D6
 TOHEXS EXT ;Convert byte to ASCII hex
+DRWTIL EXT ;Draw a tile on the screen
 
 * Initialize/Clear Screen
  JSR INIT
@@ -46,26 +47,32 @@ TOHEXS EXT ;Convert byte to ASCII hex
  JSR WAITKEY
 
 * Draw a message on the screen
- LDA  #<MYSTR
- STA  STRA
- LDA  #>MYSTR
- STA  STRA+1
- LDA  #$00
- STA  COL
- LDA  #$00
+ LDA #<MYSTR
+ STA STRA
+ LDA #>MYSTR
+ STA STRA+1
+ LDA #$00
+ STA COL
+ LDA #$00
  STA ROW
  JSR DRWS
  JSR WAITKEY
 
-MAINLOOP
 * Generate a random number
 * and print it
  JSR PRINTD6
  JSR WAITKEY
- JMP MAINLOOP
 
+* Draw the test tank tile
 
- JSR SETTEXT
+ LDA #$14       ;Column 20
+ LDY #$08       ;Row 8
+ LDX #$07       ;Tile 7
+ JSR DRWTIL
+
+ JSR WAITKEY
+ 
+ JSR SETTXT
  RTS  ;for quitting to merlin
 
 

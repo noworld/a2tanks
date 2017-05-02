@@ -66,7 +66,7 @@ OFPARM DB 3
 OFREF ENT
  DB 0
 
-OFPATH STR "/EK/RES/TITLE.BIN"
+OFPATH STR "/TKS/RES/TITLE.BIN"
 
 *-------------------------------
 * Read File

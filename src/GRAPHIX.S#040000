@@ -285,13 +285,13 @@ THREEWTILD
  DB $10
  DA THRGRNTILE
  DA THRGRNTILO
- 
+
 *-------------------------------
 * Tank test tile definition
 *-------------------------------
 TANKTE00D
  DB $02
- DB $15 ;long height here causing problems
+ DB $15
  DA TANKTE00
  DA TANKTE00
 
@@ -407,7 +407,7 @@ THRGRNTILO
  DB $55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55
  DB $2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A
  DB $55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55
- 
+
 TANKTE00 DB $00
  DB $00
  DB $30
@@ -450,4 +450,3 @@ TANKTE00 DB $00
  DB $81
  DB $00
  DB $00
-

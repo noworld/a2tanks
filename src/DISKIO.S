@@ -5,7 +5,7 @@
 ********************************
 
  REL
- DSK /EK/BIN/DISKIO.L
+ DSK /TKS/BIN/DISKIO.L
  
 MLI EQU $BF00
 COL40 EQU $C00C

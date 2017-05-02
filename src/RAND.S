@@ -7,7 +7,7 @@
 ********************************
 
  REL
- DSK /EK/BIN/RAND.L
+ DSK /TKS/BIN/RAND.L
 
 RANDSEED EQU $A8
 RANDW EQU $B8

@@ -5,7 +5,7 @@
 ********************************
 
  REL
- DSK /EK/BIN/TXTSPL.L
+ DSK /TKS/BIN/TXTSPL.L
 
 COL40 EQU $C00C
 COL80 EQU $C00D
@@ -23,61 +23,97 @@ TXTSPLASH ENT
  LDA #$00 ;page 0
  JSR CLRTXT ;Clear text
 
- LDA #<MSG1_1
+ LDA #<MSG1_01
  STA STRA
- LDA #>MSG1_1
+ LDA #>MSG1_01
  STA STRA+1
  LDA #$04
- LDX #$04
+ LDX #$02
  JSR PRTSTR
 
- LDA #<MSG1_2
+ LDA #<MSG1_02
  STA STRA
- LDA #>MSG1_2
+ LDA #>MSG1_02
+ STA STRA+1
+ LDA #$05
+ JSR PRTSTR
+
+ LDA #<MSG1_03
+ STA STRA
+ LDA #>MSG1_03
  STA STRA+1
  LDA #$06
  JSR PRTSTR
 
- LDA #<MSG1_3
+ LDA #<MSG1_04
  STA STRA
- LDA #>MSG1_3
+ LDA #>MSG1_04
+ STA STRA+1
+ LDA #$07
+ JSR PRTSTR
+
+ LDA #<MSG1_05
+ STA STRA
+ LDA #>MSG1_05
  STA STRA+1
  LDA #$08
  JSR PRTSTR
 
- LDA #<MSG1_4
+ LDA #<MSG1_06
  STA STRA
- LDA #>MSG1_4
+ LDA #>MSG1_06
+ STA STRA+1
+ LDA #$09
+ JSR PRTSTR
+
+ LDA #<MSG1_07
+ STA STRA
+ LDA #>MSG1_07
  STA STRA+1
  LDA #$0A
  JSR PRTSTR
 
- LDA #<MSG1_5
+ LDA #<MSG1_08
  STA STRA
- LDA #>MSG1_5
+ LDA #>MSG1_08
  STA STRA+1
- LDA #$0C
+ LDA #$0B
  JSR PRTSTR
-
- LDA #<MSG1_6
- STA STRA
- LDA #>MSG1_6
- STA STRA+1
- LDA #$11
+ 
+  LDA #<MSG1_09
+  STA STRA
+  LDA #>MSG1_09
+  STA STRA+1
+  LDA #$0C
  JSR PRTSTR
-
- LDA #<MSG1_7
- STA STRA
- LDA #>MSG1_7
- STA STRA+1
- LDA #$16
+ 
+  LDA #<MSG1_10
+  STA STRA
+  LDA #>MSG1_10
+  STA STRA+1
+  LDX #$04
+  LDA #$11
  JSR PRTSTR
-
- LDA #<MSG1_8
- STA STRA
- LDA #>MSG1_8
- STA STRA+1
- LDA #$17
+ 
+  LDA #<MSG1_11
+  STA STRA
+  LDA #>MSG1_11
+  STA STRA+1
+  LDA #$13
+ JSR PRTSTR
+ 
+  LDA #<MSG1_12
+  STA STRA
+  LDA #>MSG1_12
+  STA STRA+1
+  LDA #$15
+ JSR PRTSTR
+ 
+  LDA #<MSG1_13
+  STA STRA
+  LDA #>MSG1_13
+  STA STRA+1
+  LDA #$17
  JSR PRTSTR
 
  JSR SETTXT
@@ -86,11 +122,16 @@ TXTSPLASH ENT
 *-------------------------------
 * Splash screen text
 *-------------------------------
-MSG1_1 ASC "------------------------------",00
-MSG1_2 ASC "     E M B E R                ",00
-MSG1_3 ASC "           K N I G H T        ",00
-MSG1_4 ASC "------------------------------",00
-MSG1_5 ASC "       Dungeon Fantasy        ",00
-MSG1_6 ASC "            v 1.0             ",00
-MSG1_7 ASC "    (C) 2017 Nicholas Waun    ",00
-MSG1_8 ASC "     All rights reserved.     ",00
+MSG1_01 ASC "----------------------------------",00
+MSG1_02 ASC " _____ ___   _   _  _   __ _____  ",00
+MSG1_03 ASC "|_   _/ _ \ | \ | || | / //  ___| ",00
+MSG1_04 ASC "  | |/ /_\ \|  \| || |/ / \ `--.  ",00
+MSG1_05 ASC "  | ||  _  || . ` ||    \  `--. \ ",00
+MSG1_06 ASC "  | || | | || |\  || |\  \/\__/ / ",00
+MSG1_07 ASC "  \_/\_| |_/\_| \_/\_| \_/\____/  ",00
+MSG1_08 ASC "                                  ",00
+MSG1_09 ASC "----------------------------------",00
+MSG1_10 ASC "        APPLE 2 TANKS         ",00
+MSG1_11 ASC "            v 1.0             ",00
+MSG1_12 ASC "    (C) 2017 Nicholas Waun    ",00
+MSG1_13 ASC "     All rights reserved.     ",00

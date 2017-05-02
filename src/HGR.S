@@ -5,7 +5,7 @@
 ********************************
 
  REL
- DSK /EK/BIN/HGR.L
+ DSK /TKS/BIN/HGR.L
 
 SETHGR ENT
  LDA $C052 ;mixed mode off

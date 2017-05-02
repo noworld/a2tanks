@@ -5,7 +5,7 @@
 ********************************
 
  REL
- DSK /EK/BIN/TITLSCRN.L
+ DSK /TKS/BIN/TITLSCRN.L
 
 COL40 EQU $C00C
 COL80 EQU $C00D

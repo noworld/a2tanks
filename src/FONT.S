@@ -16,7 +16,7 @@
 ********************************
 
  REL
- DSK /EK/BIN/FONT.L
+ DSK /TKS/BIN/FONT.L
 
 HGRROWS EXT
 

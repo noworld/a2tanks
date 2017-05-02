@@ -7,7 +7,7 @@
 ********************************
 
  REL
- DSK /EK/BIN/MAIN.L
+ DSK /TKS/BIN/MAIN.L
 
 MLI EQU $BF00
 ROW EQU $A2

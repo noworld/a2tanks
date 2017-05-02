@@ -5,7 +5,7 @@
 ********************************
 
  REL
- DSK /EK/BIN/MATH.L
+ DSK /TKS/BIN/MATH.L
 
 QUOT EQU $AA
 DIVS EQU $A9

@@ -5,7 +5,7 @@
 ********************************
 
  REL
- DSK /EK/BIN/UTIL.L
+ DSK /TKS/BIN/UTIL.L
 
 *-------------------------------
 * Loops until a key is pressed

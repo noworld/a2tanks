@@ -5,7 +5,7 @@
 ********************************
 
  REL
- DSK /EK/BIN/LORES.L
+ DSK /TKS/BIN/LORES.L
 
 STRA EQU $A6
 CLEAR EQU $A0

@@ -6,7 +6,7 @@
 ********************************
 
  REL
- DSK /EK/BIN/GRTABLES.L
+ DSK /TKS/BIN/GRTABLES.L
 
 HGRROWS ENT
  DA $2000 ;Screen row position address table

@@ -12,6 +12,7 @@ COL40 EQU $C00C
 COL80 EQU $C00D
 
 CLRTXT EXT
+WAITKEY EXT
 
 QUIT JSR MLI
  DB $65
@@ -29,25 +30,6 @@ ERROR STA $AE
  BRK $00
 
 ********************************
-
-WAITKEY LDA $C000
- BPL WAITKEY
- STA $C010
- RTS
-
-*-------------------------------
-* Sets display to HGR mode
-*-------------------------------
-SETHGR LDA $C052
- LDA $C057
- LDA $C050
- RTS
-
-*-------------------------------
-* Sets display to text mode
-*-------------------------------
-SETTXT LDA $C051
- RTS
 
 *-------------------------------
 * Open File

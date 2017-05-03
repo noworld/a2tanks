@@ -13,13 +13,6 @@ CLEAR EQU $A0
 LORESTAB EXT
 
 *-------------------------------
-* Sets display to text mode
-*-------------------------------
-SETTXT ENT
- LDA $C051
- RTS
-
-*-------------------------------
 * Clear the screen as lores
 *-------------------------------
 CLRLO ENT

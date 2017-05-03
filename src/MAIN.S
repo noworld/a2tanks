@@ -1,14 +1,18 @@
 ********************************
-* Ember Knight Game            *
+* TANKS Combat Gmae            *
 * Main Entry Point             *
 *    Nick Waun                 *
-*    01-21-2017                *
-*    04-25-2017                *
+* Created                      *
+*    05-02-2017                *
+* Modified                     *
+*    05-03-2017                *
 ********************************
 
  REL
  DSK /TKS/BIN/MAIN.L
 
+COL80 EQU $C00D
+TXTMOD EQU $C051
 MLI EQU $BF00
 ROW EQU $A2
 COL EQU $A3
@@ -20,13 +24,12 @@ STRA EQU $A6
 
 WAITRAND EXT ;Generate random seed while waiting
 WAITKEY EXT ;Wait for keypress
-SETTXT EXT ;Set text display mode
-TXTSPLASH EXT ;Show text splash screen
+TXTSPL EXT ;Show text splash screen
 TITLSCRN EXT
 SETHGR EXT ;Set HGR mode
 CLRHGR EXT ;Clear HGR screen
 DRWC EXT ;Draw single character
-DRWS EXT  ;Draw string
+DRWS EXT ;Draw string
 ROLL_D6 EXT ;Roll a D6
 TOHEXS EXT ;Convert byte to ASCII hex
 DRWTIL EXT ;Draw a tile on the screen
@@ -35,7 +38,7 @@ DRWTIL EXT ;Draw a tile on the screen
  JSR INIT
 
 * display the text splash screen
- JSR TXTSPLASH
+ JSR TXTSPL
 
 * Generate a random seed
 * from the keypress wait time
@@ -65,15 +68,16 @@ DRWTIL EXT ;Draw a tile on the screen
 
 * Draw the test tank tile
 
- LDA #$14       ;Column 20
- LDY #$08       ;Row 8
- LDX #$07       ;Tile 7
+ LDA #$14 ;Column 20
+ LDY #$08 ;Row 8
+ LDX #$07 ;Tile 7
  JSR DRWTIL
 
  JSR WAITKEY
  
- JSR SETTXT
- RTS  ;for quitting to merlin
+ STA COL80 ;Back to 80 columns
+ LDA TXTMOD ;Back to text mode
+ RTS ;for quitting to merlin
 
 
 

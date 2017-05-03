@@ -7,18 +7,18 @@
  REL
  DSK /TKS/BIN/TXTSPL.L
 
+TXTMOD EQU $C051
 COL40 EQU $C00C
 COL80 EQU $C00D
 STRA EQU $A6
 
 PRTSTR EXT
-SETTXT EXT
 CLRTXT EXT
 
 *-------------------------------
 * Draw the text splash screen
 *-------------------------------
-TXTSPLASH ENT
+TXTSPL ENT
  STA COL40
  LDA #$00 ;page 0
  JSR CLRTXT ;Clear text
@@ -116,7 +116,7 @@ TXTSPLASH ENT
   LDA #$17
  JSR PRTSTR
 
- JSR SETTXT
+ LDA TXTMOD
  RTS
 
 *-------------------------------

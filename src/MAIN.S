@@ -67,10 +67,10 @@ DRWTIL EXT ;Draw a tile on the screen
  JSR WAITKEY
 
 * Draw the test tank tile
-
- LDA #$14 ;Column 20
- LDY #$08 ;Row 8
- LDX #$07 ;Tile 7
+ JSR CLRHGR
+ LDA #$14 ;Row 20
+ LDY #$08 ;Column 8
+ LDX #$00 ;Tile 0
  JSR DRWTIL
 
  JSR WAITKEY

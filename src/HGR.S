@@ -1,16 +1,39 @@
 ********************************
 * Hi-Res Graphics Module       *
 *    Nick Waun                 *
+* Created                      *
 *    01-21-2017                *
+* Modified                     * 
+*    05-04-2017                *
 ********************************
 
  REL
  DSK /TKS/BIN/HGR.L
+ 
+HGRROWS EXT
+HGRLINS EXT
+
+VIDROWS EQU $80
+VIDLINS EQU $82
+
 
 SETHGR ENT
  LDA $C052 ;mixed mode off
  LDA $C057 ;hi-res mode on
  LDA $C050 ;text mode off
+ 
+ * Set up display addressing
+ LDA #<HGRROWS
+ STA VIDROWS
+ LDA #>HGRROWS
+ STA VIDROWS+1
+ 
+  * Set up display addressing 
+ LDA #<HGRLINS
+ STA VIDLINS
+ LDA #>HGRLINS
+ STA VIDLINS+1
+ 
  RTS
 
 CLRHGR ENT

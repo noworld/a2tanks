@@ -8,7 +8,6 @@
  REL
  DSK /TKS/BIN/GRAPHIX.L
 
-HGRROWS EXT  ;Table of HGR screen rows
 HGRLINS EXT  ;Table of HGR scanlines
 
 VIDADR EQU $80

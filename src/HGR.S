@@ -22,13 +22,13 @@ SETHGR ENT
  LDA $C057 ;hi-res mode on
  LDA $C050 ;text mode off
  
- * Set up display addressing
+* Set up display addressing
  LDA #<HGRROWS
  STA VIDROWS
  LDA #>HGRROWS
  STA VIDROWS+1
  
-  * Set up display addressing 
+* Set up display addressing 
  LDA #<HGRLINS
  STA VIDLINS
  LDA #>HGRLINS

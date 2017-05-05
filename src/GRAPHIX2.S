@@ -7,7 +7,7 @@
 
  REL
  DSK /TKS/BIN/GRAPHIX.L
- 
+
 * AE, AF
 TWID EQU $A7
 THGT EQU $A6
@@ -21,7 +21,7 @@ VIDLINS EQU $82
 * DRWTIL
 * Draw Tile
 *
-* Routine to draw tiles of 
+* Routine to draw tiles of
 * arbitrary width and height
 *    IN:
 *        - Screen row is in A
@@ -33,14 +33,14 @@ DRWTIL ENT
 
 * Save the row
  STA TROW ; Save the row
- 
+
 * Mult the ID by 4 to index
 * into tile table
  TXA
  ASL
  ASL
  TAX
- 
+
 * Store and work with the column
  TYA
  STA TCOL
@@ -48,13 +48,13 @@ DRWTIL ENT
 * Get & store the address
 * of the tile that we will
 * be drawing
- 
+
  CLC ;Draw to even or odd
  LSR ;column?
  BCC :ISEVEN
  INX ;Bump to next tile location
  INX ;for odd columns
-:ISEVEN 
+:ISEVEN
  LDA TILTAB,X
  STA TILADR
  INX
@@ -64,7 +64,7 @@ DRWTIL ENT
 * Set up the first location
 * in video memory
  JSR CALCVID
-  
+
 * Load tile metadata
  LDX #$00
  LDA (TILADR,X) ;Load the tile width
@@ -73,10 +73,10 @@ DRWTIL ENT
  INC TILADR ;Next tile byte
  LDA (TILADR,X) ;Load the tile height
  TAX ;X = height
- STA THGT ;Save 
+ STA THGT ;Save
  INC TILADR ;next tile byte
 
-* Draw the tile to video memory 
+* Draw the tile to video memory
 * TILADR --> VIDADR
  DEX
 :DRAWLINE
@@ -114,40 +114,28 @@ CALCVID
  PHA
 * Calculate index into the table
 * using row
- LDA VIDLINS
+ LDA VIDLINS ;LSB
  STA VIDADR
  LDA VIDLINS+1 ;Store the MSB of video
  STA VIDADR+1 ; base address for later
- LDA TROW ;Get the row back
-* Handle numbers > +127
- BPL :NOTOVER
- INC VIDADR ;Add 1 since we could not add $80
- CLC
- ADC #$7F
- CLC
- ASL
- CLC
- ADC VIDADR ;Add to table base
- STA VIDADR ;Save the tile draw address 
- BCC :NOTOVER
- INC VIDADR+1 ;Carry to MSB
- LDA #$7F
-:NOTOVER
-* Handle numbers <= +127
+ LDA TROW ;Get the destination row
  CLC ;Mult by 2 to index addr
  ASL
+ BCC :NOCARRY0
+ INC VIDADR+1
+:NOCARRY0
  CLC
  ADC VIDADR ;Add to table base
- STA VIDADR ;Save the tile draw address 
+ STA VIDADR ;Save the tile draw address
  BCC :NOCARRY1
  INC VIDADR+1 ;Carry to MSB
 :NOCARRY1
 * Get the address for that row
- LDX #$00
- LDA (VIDADR,X)
+ LDY #$00
+ LDA (VIDADR),Y
  TAX
  INY
- LDA (VIDADR,X)
+ LDA (VIDADR),Y
  STA VIDADR+1
  TXA
  STA VIDADR
@@ -165,8 +153,8 @@ CALCVID
  PLA
  TAY
  RTS
- 
- 
+
+
 *===============================
 * Tile Definitions Section     *
 *===============================
@@ -176,7 +164,7 @@ CALCVID
 * tile definition. Address for
 * even tile is followed by addr
 * for odd tile. This limits to
-* 32 tiles per table. Tiles are 
+* 32 tiles per table. Tiles are
 * numbered 0, 1, 2, 3...
 *-------------------------------
 TILTAB
@@ -184,7 +172,7 @@ TILTAB
  DA GRNTILO ;Odd data
  DA THRGRNTILE
  DA THRGRNTILO
- 
+
 *-------------------------------
 * Tile Scanline data
 * First byte is tile width in bytes
@@ -201,7 +189,7 @@ GRNTILE
  DB $2A
  DB $2A
 
-GRNTILO 
+GRNTILO
  DB $01,$08 ;width,height
  DB $55
  DB $55
@@ -211,7 +199,7 @@ GRNTILO
  DB $55
  DB $55
  DB $55
- 
+
 THRGRNTILE
  DB $03,$16
  DB $2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A
@@ -223,4 +211,3 @@ THRGRNTILO
  DB $55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55
  DB $2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A
  DB $55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55
-

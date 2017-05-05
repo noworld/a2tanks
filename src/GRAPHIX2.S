@@ -2,7 +2,10 @@
 * Improved Graphix             *
 *      Drawing Routines        *
 *    Nick Waun                 *
+* Created                      *
 *    05-04-2017                *
+* Modified                     *
+*    05-05-2017                *
 ********************************
 
  REL
@@ -114,21 +117,19 @@ CALCVID
  PHA
 * Calculate index into the table
 * using row
- LDA VIDLINS ;LSB
- STA VIDADR
- LDA VIDLINS+1 ;Store the MSB of video
- STA VIDADR+1 ; base address for later
- LDA TROW ;Get the destination row
- CLC ;Mult by 2 to index addr
- ASL
+ LDA VIDLINS+1 ;Store MSB for future use
+ STA VIDADR+1
+ LDA TROW ;Get the row
+ CLC ;Mult by 2 to
+ ASL ;index address
  BCC :NOCARRY0
  INC VIDADR+1
-:NOCARRY0
  CLC
- ADC VIDADR ;Add to table base
- STA VIDADR ;Save the tile draw address
+:NOCARRY0
+ ADC VIDLINS
+ STA VIDADR
  BCC :NOCARRY1
- INC VIDADR+1 ;Carry to MSB
+ INC VIDADR+1
 :NOCARRY1
 * Get the address for that row
  LDY #$00
@@ -164,8 +165,8 @@ CALCVID
 * tile definition. Address for
 * even tile is followed by addr
 * for odd tile. This limits to
-* 32 tiles per table. Tiles are
-* numbered 0, 1, 2, 3...
+* 64 tiles per table. Tiles are
+* numbered 0, 1, 2, 3... 63
 *-------------------------------
 TILTAB
  DA GRNTILE ;Even data

@@ -95,7 +95,14 @@ DRWTIL ENT
  INC TROW ;Increment the target row
  JSR CALCVID ;Set up for next row
  LDY TWID ;Reset width
- JMP :DRAWLINE ;Continue drawing
+ TYA
+ CLC
+ ADC TILADR
+ STA TILADR
+ BCC :DRAWLINE
+ INC TILADR+1 
+ CLV ;Trying out a forced branch
+ BVC :DRAWLINE ;Continue drawing
 :DONE RTS
 
 *-------------------------------
@@ -173,6 +180,12 @@ TILTAB
  DA GRNTILO ;Odd data
  DA THRGRNTILE
  DA THRGRNTILO
+ DA GRALIENE
+ DA GRALIENO
+ 
+MASKTAB
+ DA GRNTILM
+ DA THRGRNTILM
 
 *-------------------------------
 * Tile Scanline data
@@ -202,13 +215,99 @@ GRNTILO
  DB $55
 
 THRGRNTILE
- DB $03,$16
- DB $2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A
- DB $55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55
- DB $2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A
+ DB $03,$10
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
+ DB $2A,$55,$2A
 
 THRGRNTILO
- DB $03,$16
- DB $55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55
- DB $2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A,$2A
- DB $55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55,$55
+ DB $03,$10
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ DB $55,$2A,$55
+ 
+GRALIENE
+ DB $02,$08
+ DB $28,$01
+ DB $28,$01
+ DB $08,$01
+ DB $22,$04
+ DB $22,$04
+ DB $22,$04
+ DB $22,$04
+ DB $22,$04
+ 
+GRALIENO
+ DB $02,$08
+ DB $54,$00
+ DB $54,$00
+ DB $44,$00
+ DB $11,$02
+ DB $11,$02
+ DB $11,$02
+ DB $11,$02
+ DB $11,$02
+
+*-------------------------------
+* Tile Mask data
+* Representation of the tile collision
+* area in white
+*
+* First byte is tile width in bytes
+* Second byte is height in scanlines
+*-------------------------------
+GRNTILM
+ DB $01,$08 ;width,height
+ DB $FF
+ DB $FF
+ DB $FF
+ DB $FF
+ DB $FF
+ DB $FF
+ DB $FF
+ DB $FF
+ 
+THRGRNTILM
+ DB $03,$10
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF
+ DB $FF,$FF,$FF

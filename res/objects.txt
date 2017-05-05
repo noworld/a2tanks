@@ -1,0 +1,25 @@
+SPRITE (linked list element)
+----------------------------
+(14 bytes)
+
+DB ID
+DA NEXT
+DA OBJ
+DA TILE
+DW X_LOC (0-279)
+DW Y_LOC (0-191)
+DB X_VEL (-128 - +127
+DB Y_VEL
+DB FLAGS
+
+-----
+FLAGS
+-----
+0 - DEAD/REMOVE
+1 - 
+2 - 
+3 - 
+4 - 
+5 - 
+6 - 
+7 - 

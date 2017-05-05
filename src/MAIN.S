@@ -1,11 +1,11 @@
 ********************************
-* TANKS Combat Gmae            *
+* TANKS Combat Game            *
 * Main Entry Point             *
 *    Nick Waun                 *
 * Created                      *
 *    05-02-2017                *
 * Modified                     *
-*    05-03-2017                *
+*    05-05-2017                *
 ********************************
 
  REL
@@ -66,12 +66,26 @@ DRWTIL EXT ;Draw a tile on the screen
  JSR PRINTD6
  JSR WAITKEY
 
-* Draw the test tank tile
+* Draw the test alien
+
+ LDA #$14
+ STA $B0
+ LDA #$00
+ STA $B1
+
+:MAINLOOP
  JSR CLRHGR
- LDA #$14 ;Row 20
- LDY #$08 ;Column 8
- LDX #$00 ;Tile 0
+ LDA $B0
+ LDY $B1
+ LDX #$02 ;Tile 2
  JSR DRWTIL
+ INC $B1
+ LDA $B1
+ CMP #$27
+ BMI :MAINLOOP
+ LDA #$00
+ STA $B1
+ JMP :MAINLOOP
 
  JSR WAITKEY
  
